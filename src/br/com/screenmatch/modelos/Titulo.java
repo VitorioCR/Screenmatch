@@ -1,6 +1,6 @@
 package br.com.screenmatch.modelos;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -8,12 +8,25 @@ public class Titulo {
     private int totalDeAvaliacoes;
     private int duracaoEmMinutos;
 
+    public Titulo(String nome, int anoDeLancamento) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+    }
+
     public int getTotalDeAvaliacoes(){
         return totalDeAvaliacoes;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getAnoDeLancamento() {
+        return (int) anoDeLancamento;
     }
 
     public void setAnoDeLancamento(int anoDeLancamento) {
@@ -47,4 +60,8 @@ public class Titulo {
     }
 
 
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
+    }
 }
